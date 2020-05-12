@@ -1,0 +1,222 @@
+
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,inoitial-scale=1">
+<meta charset ="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv = "refresh" content="6secs">
+<meta http-equiv = "X-UA-Compatible" content = "ie=edges">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<title>Quiz Login </title>
+
+<style>
+body{
+    background-color:white;
+    color:black;
+   
+}
+h1{
+    font-size:30px;
+}
+p{
+    font-size:21px;
+}
+span{
+    color:red;
+}
+
+input{
+    background: transparent;
+	outline:none;
+	border:none;
+	border-bottom:1px solid crimson;
+    transition:0.6s;
+}
+input[type="radio"]{
+    padding: 20px;
+    background-color: blue;
+    font-size:30px;
+}
+input[type=radio]:checked{
+    color:green;
+}
+input[type="submit"]{
+	border:none;
+	outline:none;
+	background: red;
+	width:120px;
+	border-radius:40px;
+	height:30px;
+	cursor:pointer;
+    }
+    form{
+      
+        padding:30px;
+        width:45%;
+        margin:auto;
+        border-radius:35px;
+        color:black;
+        display:none;
+    }
+    .clock{
+        color:rgb(8, 0, 0);
+        font-size: 30px;
+        position: sticky;
+    float:right;
+        top:0;
+        z-index: 333;
+        
+    }
+   
+    #time{
+        color:green;
+        font-size: 28px;
+    }
+    .alltime{
+      float:right;
+       position:fixed;
+      
+    }
+button{
+    border:none;
+	outline:none;
+	background:blue;
+	width:120px;
+	border-radius:40px;
+	height:30px;
+	cursor:pointer;
+    color:white;
+}
+
+</style>
+<script>
+function Verify(){
+    var que1 = document.vvv.que1.value;
+    var que2 = document.vvv.que2.value;
+    var que3 = document.vvv.que3.value;
+    var que4 = document.vvv.que4.value;
+    var que5 = document.vvv.que5.value;
+    var que6 = document.vvv.que6.value;
+    var que7 = document.vvv.que7.value;
+    var que8 = document.vvv.que8.value;
+    var que9 = document.vvv.que9.value;
+    var que10 = document.vvv.que10.value;
+    var ans = ["Abuja","Musa yar'adua","Russia","France","None of the above","2 and -2",
+    "None of the above","geoid","'2'2","Wind vane"];
+    var ques = [que1,que2,que3,que4,que5,que6,que7,que8,que9,que10];
+    var score = 0;
+    var total = 10;
+    var incorrect = 0;
+    for(var i = 0; i <= total; i++){
+        if(ques[i] == ans[i]){
+            score++;
+        }
+        if(ques[i] != ans[i] || ques[i] == ""){
+            incorrect++;
+        }
+    }
+    alert("You got" + "" + incorrect + "" + "wrong");
+
+     alert(score);
+      if(score < 5){
+          alert("You failed the quiz");
+          window.location.assign("quizproject.html");
+      }
+      if(score > 5){
+          //alert("You passed");
+          window.location.assign("quizproject.html");
+      }
+      clearInterval(int);
+     
+}
+function Timer(){
+    document.getElementsByTagName("form")[0].style.display="block";
+    var time = 30;
+    var int = setInterval(function(){
+        time--;
+        document.getElementById("time").innerHTML = time;
+        if(time == 0){
+            document.getElementById("time").innerHTML = "Time out!!";
+            document.getElementById("time").style.color = "red";
+            document.getElementsByTagName("button")[0].style.cursor = "not-allowed";
+            var ints = document.getElementsByTagName("input");
+            for(i=0;i<ints.length;i++){
+                ints[i].style.cursor = "not-allowed";
+            }
+            clearInterval(int);
+            for(var a = 0; a <= total; a++){
+        if(ques[a] == ans[a]){
+            score++;
+        }
+        }
+        alert(score);
+    }
+},1000);
+}
+
+
+</script>
+</head>
+<body >
+    <div class="alltime">
+    <div class="clock">Time Countdown:<span id="time"></span></div>
+        <div class="start"><button onclick="Timer()">START</button></div>
+    </div></div><br>
+<p id="time"></p>
+<center><h1>
+QUIZ QUESTIONS<h1></center>
+<form  name="vvv" action="questions.html" method="post">
+<p>1 What is the capital of Nigeria:<br>
+<input type="radio" name="que1" value="Lagos">Lagos
+<input type="radio"name="que1"value="Abuja">Abuja
+<input type="radio"name="que1"value="Calabar">Calabar<br>
+<input type="radio"name="que1"value="None of the above">None of the above</p>
+<p>2 Who is the federal Commander of Niger:<br>
+<input type="radio" name="que2"value="Goodluck jonathan">Goodluck jonathan
+<input type="radio"name="que2"value="Musa yar'adua">Musa yar'adua
+<input type="radio"name="que2"value="Muhammadu buhari">Muhammadu buhari
+<input type="radio"name="que2"value="None of the above">None of the above</p>
+<p>3 Which country hosted the last world cup 2018:<br>
+<input type="radio" name="que3"value="Nigeria">Nigeria
+<input type="radio"name="que3"value="Russia">Russia
+<input type="radio"name="que3"value="Brazil">Brazil
+<input type="radio"name="que3"value="Japan">Japan</p>
+<p>4 Which country won the cup:<br>
+<input type="radio"name="que4"value="Lagos">Lagos
+<input type="radio"name="que4"value=">France">France
+<input type="radio"name="que4"value="Argentina">Argentina
+<input type="radio"name="que4"value="None of the above">None of the above</p>
+<p>5 Is 1 a prime number:<br>
+<input type="radio"name="que5"value="may be">may be
+<input type="radio"name="que5"value="i dont think so">i dont think so
+<input type="radio"name="que5value" value="yes">yes
+<input type="radio"name="que5"value="None of the above">None of the above</p>
+<p>6 Which of these are conjugate numbers:<br>
+<input type="radio"name="que6" value="0 and 1">0 and  1
+<input type="radio"name="que6" value="0 and -0">0 and -0
+<input type="radio"name="que6" value="1 and -1/2">1 and -1/2
+<input type="radio"name="que6" value="2 and -2">2 and -2</p>
+<p>7 which of the following are part of the computer hardwares:<br>
+<input type="radio"name="que7"value="coreldraw">coreldraw
+<input type="radio"name="que7"value="spreadsheet">spreadsheet
+<input type="radio"name="que7"value="None of the above">None of the above</p>
+<p>8 The shape of the earth is also known as ______:<br>
+<input type="radio"name="que8"value="a perfect circle">a perfect circle
+<input type="radio"name="que8"value="bio">bio
+<input type="radio"name="que8"value="geoid">geoid
+<input type="radio"name="que8"value="barchan">barchan</p>
+<p>9 Programming: "2" + 2 gives :<br>
+<input type="radio"name="que9"value="4">4
+<input type="radio"name="que9"value="22">22
+<input type="radio"name="que9" value="'2'2">"2"2
+<input type="radio"name="que9"value="None of the above">None of the above</p>
+<p>10 mention one instrument used for detecting wind direction :<input type="text"name="que10" value="Wind vane">
+</p>
+<input type="submit" name="submit" onclick="Verify();"></form><br><br>
+<span id="score"></span>
+
+
+
+
+</body>
